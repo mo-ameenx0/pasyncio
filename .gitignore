@@ -1,0 +1,4 @@
+# setuptools folders
+dist/
+build/
+*.egg-info/
