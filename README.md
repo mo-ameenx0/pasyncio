@@ -27,7 +27,7 @@ asyncio.run(main())
 ```
 **Using Pretty Asyncio**
 ```python
-from pasyncio import create_task, run_async_loop
+from pasyncio import run, create_task
 
 @create_task
 async def long_process():
@@ -37,7 +37,7 @@ async def long_process():
 def sync_operation():
     print('sync operation')
 
-@run_async_loop
+@run
 async def main():
     long_process()
 
