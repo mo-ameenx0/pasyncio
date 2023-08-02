@@ -19,25 +19,33 @@ def run(func=None, *, debug=None):
         return decorator(func)
     return decorator
 
-def run_until_complete(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        if not iscoroutinefunction(func):
+def run_until_complete(func=None):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            if not iscoroutinefunction(func):
+                    raise TypeError(f'the decorated function ({func.__name__}) is not a coroutine use async')
+
+            loop = asyncio.get_event_loop()
+            loop.run_until_complete(func())
+
+        return wrapper
+    if callable(func):
+        return decorator(func)
+    return decorator
+
+def run_forever(func=None):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            if not iscoroutinefunction(func):
                 raise TypeError(f'the decorated function ({func.__name__}) is not a coroutine use async')
+            
+            loop = asyncio.get_event_loop()
+            asyncio.ensure_future(func())
+            loop.run_forever()
 
-        loop = asyncio.get_event_loop()
-        loop.run_until_complete(func())
-
-    return wrapper
-
-def run_forever(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        if not iscoroutinefunction(func):
-            raise TypeError(f'the decorated function ({func.__name__}) is not a coroutine use async')
-        
-        loop = asyncio.get_event_loop()
-        asyncio.ensure_future(func())
-        loop.run_forever()
-
-    return wrapper
+        return wrapper
+    if callable(func):
+        return decorator(func)
+    return decorator
