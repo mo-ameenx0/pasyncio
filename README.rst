@@ -27,7 +27,8 @@ asyncio.run(main())
 ```
 **Using Pretty Asyncio**
 ```python
-from pasyncio import run, create_task
+from pasyncio.runners import run
+from pasyncio import create_task
 
 @create_task
 async def long_process():
@@ -45,3 +46,7 @@ async def main():
 
 main()
 ```
+
+## Installation
+
+## Development
