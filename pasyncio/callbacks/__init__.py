@@ -15,7 +15,7 @@ def call_soon(func=None, *, callback, context=None):
                 context=context,
             )
 
-            func()
+            func(*args, **kwargs)
 
         return wrapper
     if callable(func):
@@ -37,7 +37,7 @@ def call_later(func=None, *, delay, callback, context=None):
                 context=context,
             )
 
-            func()
+            func(*args, **kwargs)
 
         return wrapper
     if callable(func):
@@ -59,7 +59,7 @@ def call_at(func=None, *, when, callback, context=None):
                 context=context,
             )
 
-            func()
+            func(*args, **kwargs)
 
         return wrapper
     if callable(func):
