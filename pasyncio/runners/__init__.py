@@ -25,7 +25,7 @@ def run_until_complete(func=None):
         @wraps(func)
         def wrapper(*args, **kwargs):
             if not iscoroutinefunction(func):
-                    raise TypeError(f'the decorated function ({func.__name__}) is not a coroutine use async')
+                raise TypeError(f'the decorated function ({func.__name__}) is not a coroutine use async')
 
             loop = asyncio.get_event_loop()
             loop.run_until_complete(func(*args, **kwargs))
