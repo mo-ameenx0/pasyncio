@@ -9,7 +9,7 @@ def create_task(func=None, *, name=None, context=None, callback=None):
             if not iscoroutinefunction(func):
                 raise TypeError(f'the decorated function ({func.__name__}) is not a coroutine use async')
 
-            if not callback and not callable(callback):
+            if callback and not callable(callback):
                 raise TypeError(f'the callback for function ({func.__name__}) must be callable not a {type(callback)}')
 
             task = asyncio.create_task(
