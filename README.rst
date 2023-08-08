@@ -11,42 +11,30 @@ async def long_process():
     await asyncio.sleep(5)
     return '(e.g. data from IO process)'
 
-def sync_operation():
-    print('sync operation')
-
 async def main():
-    # Run the corutine as a task
-    task = asyncio.create_task(long_process())
-    
-    sync_operation()
+    result = await asyncio.create_task(long_process())
 
-    await task
-    print(task.result())
+    print(result)
 
 asyncio.run(main())
 ```
 **Using Pretty Asyncio**
 ```python
-from pasyncio.runners import run
-from pasyncio import create_task
+import asyncio
+from pasyncio import run, create_task
 
 @create_task
 async def long_process():
     await asyncio.sleep(5)
     return '(e.g. data from IO process)'
 
-def sync_operation():
-    print('sync operation')
-
 @run
 async def main():
-    long_process()
+    result = await long_process()
 
-    sync_operation()
+    print(result)
 
 main()
 ```
 
 ## Installation
-
-## Development
