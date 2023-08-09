@@ -1,6 +1,6 @@
 # Pretty Asyncio
-Pretty Asyncio is a library with a goal to ease the usage of the built in `asyncio` library by providing simple python 
-decorators. `pasyncio` don't add new features to the existing library but only provides a simpler way to use `asyncio` 
+Pretty Asyncio goal is to ease the usage of the built in `asyncio` library by providing simple python 
+decorators. `pasyncio` doesn't add new features to the existing library but only provides a simpler way to use `asyncio` 
 library.
 
 ## Hello World
@@ -82,7 +82,7 @@ loop.run_until_complete(
 )
 ```
 
-I think now after this simple comparison the issue is visible. python requires so much run asynchronous program. However, 
+I think now after this simple comparison the issue is visible. python requires so much to run asynchronous programs. However, 
 the previous python example could be modified more to make it easier to read.
 
 ```python
@@ -101,7 +101,7 @@ async def main():
 run(main())
 ```
 
-Ok much better! however, for this simple programm it start to be overwhelming to add a new `async`. The comparison goal 
+Ok much better! however, for this simple program it start to be overwhelming to add a new `async`. The comparison goal 
 is just to see how clear the `javascript` async/await compared to python when using `asyncio`.
 
 Now, `pasyncio` want to achive this simplicity in the code. Let's us see how `pasyncio` achive more code readability.
